@@ -9,7 +9,7 @@ st.set_page_config(page_title="SSA Forms Assistant", page_icon="📝", layout="w
 recognizer = sr.Recognizer()
 
 st.title("📝 SSA Forms Assistant")
-st.write("Complete SSA-3369-BK (Work History) & SSA-3373-BK (Function Report) using voice or text for each individual question.")
+st.write("Complete SSA-3369-BK (Work History) & SSA-3373-BK (Function Report) using voice or text for each question.")
 
 # --- Helper Function for Voice Recognition ---
 def process_audio(audio_file):
@@ -114,6 +114,7 @@ if form_selection == "SSA-3369-BK (Work History)":
     val_remarks = process_audio(audio_remarks) if audio_remarks else ""
     remarks = st.text_area("Additional remarks:", value=val_remarks, key="txt_3369_remarks")
 
+    st.write("---")
     if st.button("Generate SSA-3369-BK PDF", type="primary"):
         form_fields = {
             "NAME": claimant_name,
@@ -218,6 +219,7 @@ elif form_selection == "SSA-3373-BK (Function Report)":
     val_remarks_3373 = process_audio(audio_remarks_3373) if audio_remarks_3373 else ""
     remarks_3373 = st.text_area("Additional remarks:", value=val_remarks_3373, key="txt_3373_remarks")
 
+    st.write("---")
     if st.button("Generate SSA-3373-BK PDF", type="primary"):
         form_fields_3373 = {
             "NAME": claimant_name,
